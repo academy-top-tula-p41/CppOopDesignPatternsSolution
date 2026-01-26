@@ -1,14 +1,27 @@
 ﻿#include <iostream>
 
-#include "ImmutableInterfacePattern.h"
+#include "PropertyContainerPattern.h"
+
 #include "Examples.h"
 
 int main()
 {
-    Point2D* point = new Point2D(10, 15);
-    point->SetX(20);
-    std::cout << point << "\n";
+    Movie warAndPiece("War and Piece");
 
-    IImmutablePoint2D* pointConst = new Point2D(20, 25);
-    //pointConst->Set(50);
+    warAndPiece.SetProperty("country", "USSR");
+    warAndPiece.SetProperty("year", "1975");
+    warAndPiece.SetProperty("director", "S. Bondarchuk");
+    warAndPiece.SetProperty("year", "1965");
+
+    auto propertyNames = warAndPiece.GetPropertyNames();
+
+    std::cout << "Movie name: " << warAndPiece.Title()
+              << " (" << warAndPiece.Id() << ")\n";
+
+    for (auto it{ propertyNames.begin() }; it != propertyNames.end(); it++)
+        std::cout << "\t" << *it << ": " << warAndPiece.GetProperty(*it) << "\n";
+
+    Movie ironia("Ironia sudby");
+    std::cout << "Movie name: " << ironia.Title()
+        << " (" << ironia.Id() << ")\n";
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "DelegationPattern.h"
+#include "ImmutableInterfacePattern.h"
 
 void VendingSession(IVending* vending)
 {
@@ -26,5 +27,15 @@ public:
         vending->SetVending(new BookVending());
         VendingSession(vending);
 	}
+
+    static void ImmutableInterfaceExample()
+    {
+        Point2D* point = new Point2D(10, 15);
+        point->SetX(20);
+        std::cout << point << "\n";
+
+        IImmutablePoint2D* pointConst = new Point2D(20, 25);
+        //Point2D*pointConst->SetX(50);
+    }
 };
 

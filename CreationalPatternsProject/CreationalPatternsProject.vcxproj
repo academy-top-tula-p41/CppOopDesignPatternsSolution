@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{01156a4a-02d9-4c48-a5c8-d2c244d3d332}</ProjectGuid>
-    <RootNamespace>FundamentalPatternsProject</RootNamespace>
+    <ProjectGuid>{b6eb1631-fb65-4911-a611-74de04151b85}</ProjectGuid>
+    <RootNamespace>CreationalPatternsProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -102,7 +102,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,13 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FundamentalPatternsProject.cpp" />
+    <ClCompile Include="CreationalPatternsProject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DelegationPattern.h" />
-    <ClInclude Include="Examples.h" />
-    <ClInclude Include="ImmutableInterfacePattern.h" />
-    <ClInclude Include="PropertyContainerPattern.h" />
+    <ClInclude Include="FactoryMethodPattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

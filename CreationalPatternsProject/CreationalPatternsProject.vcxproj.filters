@@ -15,21 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FundamentalPatternsProject.cpp">
+    <ClCompile Include="CreationalPatternsProject.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DelegationPattern.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Examples.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ImmutableInterfacePattern.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PropertyContainerPattern.h">
+    <ClInclude Include="FactoryMethodPattern.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

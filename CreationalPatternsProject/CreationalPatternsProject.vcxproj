@@ -126,6 +126,8 @@
     <ClCompile Include="CreationalPatternsProject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractFactoryPattern.h" />
+    <ClInclude Include="Examples.h" />
     <ClInclude Include="FactoryMethodPattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

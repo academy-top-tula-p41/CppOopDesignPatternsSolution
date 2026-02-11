@@ -1,19 +1,11 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+﻿#include <iostream>
 
-#include <iostream>
-
-#include "BridgePattern.h"
-using namespace BridgeNamespace;
+#include "CompositePattern.h"
+using namespace CompositeNamespace;
 
 int main()
 {
-    /*BridgeClient* client = new BridgeClient();
-
-    Implementation* implementation = new ConcreteImplementationA();
-    Abstraction* abstraction = new Abstraction(implementation);
-
-    client->ClentCode(abstraction);*/
-
-    
+    CompositeClient* client = new CompositeClient();
+    client->ClientCode();
 
 }

@@ -1,11 +1,10 @@
 ﻿#include <iostream>
 
-#include "CompositePattern.h"
-using namespace CompositeNamespace;
+#include "ProxyPattern.h"
 
 int main()
 {
-    CompositeClient* client = new CompositeClient();
-    client->ClientCode();
-
+	ProxyClient* client = new ProxyClient();
+	//client->ClientCode(new Service());
+	client->ClientCode(new Proxy(new Service()));
 }

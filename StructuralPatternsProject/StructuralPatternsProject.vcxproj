@@ -130,7 +130,10 @@
     <ClInclude Include="AdapterPattern.h" />
     <ClInclude Include="BridgePattern.h" />
     <ClInclude Include="CompositePattern.h" />
+    <ClInclude Include="DecoratorPattern.h" />
     <ClInclude Include="Examples.h" />
+    <ClInclude Include="FacadePattern.h" />
+    <ClInclude Include="ProxyPattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

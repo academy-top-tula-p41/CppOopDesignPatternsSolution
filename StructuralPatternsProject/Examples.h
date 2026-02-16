@@ -7,6 +7,15 @@ using namespace AdapterNamespace;
 #include "BridgePattern.h"
 using namespace BridgeNamespace;
 
+#include "CompositePattern.h"
+using namespace CompositeNamespace;
+
+#include "DecoratorPattern.h"
+using namespace DecoratorNamespace;
+
+#include "FacadePattern.h"
+using namespace FacadeNamespace;
+
 class Examples
 {
 public:
@@ -44,6 +53,57 @@ public:
 
         System* system = new System(logger);
         system->Work();
+    }
+
+    static void CompositeExamples()
+    {
+        /*CompositeClient* client = new CompositeClient();
+        client->ClientCode();*/
+
+        Army* army = new Army();
+        army->CreateArmy();
+        std::cout << army->GetArmy()->Info(0) << "\n";
+    }
+    
+    static void DecoratorExamples()
+    {
+        /*DecoratorClient* client = new DecoratorClient();
+
+        IComponent* component = new ConcreteComponent();
+        client->ClientCode(component);
+
+        component = new ConcreteDecoratorA(component);
+        client->ClientCode(component);
+
+        component = new ConcreteDecoratorB(component);
+        client->ClientCode(component);
+
+        component = new ConcreteDecoratorA(component);
+        client->ClientCode(component);*/
+
+        MessageClient* client = new MessageClient();
+
+        IMessage* message = new MessanderMessage();
+        message->From() = "@Bobby";
+        message->To() = "@Sammy";
+        message->Text() = "Hello world!";
+
+        client->SendMessage(message);
+        std::cout << "\n";
+
+        message = new FileMessage(message, "photo.jpg");
+        client->SendMessage(message);
+        std::cout << "\n";
+
+        message = new ContactMessage(message, "Leo: 8 (999) 123-45-67");
+        client->SendMessage(message);
+        std::cout << "\n";
+    }
+
+    static void FacadeExample()
+    {
+        FacadeClient* client = new FacadeClient();
+        client->ClientCode(new Facade());
     }
 };
 

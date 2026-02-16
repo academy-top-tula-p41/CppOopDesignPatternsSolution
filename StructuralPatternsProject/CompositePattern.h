@@ -254,5 +254,48 @@ namespace CompositeNamespace
 
 		void Add(Unit* unit) { this->units.push_back(unit); }
 	};
+
+	class Army
+	{
+		Unit* army{};
+	public:
+		void CreateArmy()
+		{
+			/*std::vector<Factory*> factories;
+			factories.push_back(new InfantryFactory());
+			factories.push_back(new ArcherFactory());
+			factories.push_back(new CavalryFactory());*/
+
+			Factory* factory = new InfantryFactory();
+			Unit* infantryLegion = new MilitaryUnit("Infantry Legion");
+			int count = 10 + rand() % 11;
+			for (int i{}; i < count; i++)
+				((MilitaryUnit*)infantryLegion)->Add(factory->Create(5, 8, 7, 10));
+			delete factory;
+
+			factory = new ArcherFactory();
+			Unit* archerLegion = new MilitaryUnit("Archer Legion");
+			count = 10 + rand() % 11;
+			for (int i{}; i < count; i++)
+				((MilitaryUnit*)archerLegion)->Add(factory->Create(7, 11, 6, 9));
+			delete factory;
+
+			factory = new CavalryFactory();
+			Unit* cavalryLegion = new MilitaryUnit("Cavalry Legion");
+			count = 10 + rand() % 11;
+			for (int i{}; i < count; i++)
+				((MilitaryUnit*)cavalryLegion)->Add(factory->Create(12, 16, 9, 12));
+			Unit* cezar = factory->Create(10, 15, 10, 15);
+			delete factory;
+
+			army = new MilitaryUnit("Army");
+			((MilitaryUnit*)army)->Add(infantryLegion);
+			((MilitaryUnit*)army)->Add(archerLegion);
+			((MilitaryUnit*)army)->Add(cavalryLegion);
+			((MilitaryUnit*)army)->Add(cezar);
+		}
+
+		Unit* GetArmy() { return this->army; }
+	};
 }
 

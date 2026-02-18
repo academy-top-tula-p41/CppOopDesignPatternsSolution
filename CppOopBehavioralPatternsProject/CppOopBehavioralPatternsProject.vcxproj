@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5d4457e8-90b0-4bff-962a-49bb4a53d2b1}</ProjectGuid>
-    <RootNamespace>StructuralPatternsProject</RootNamespace>
+    <ProjectGuid>{8d15ef18-806e-484a-aaeb-02586b9c055f}</ProjectGuid>
+    <RootNamespace>CppOopBehavioralPatternsProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -102,7 +102,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,17 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="StructuralPatternsProject.cpp" />
+    <ClCompile Include="CppOopBehavioralPatternsProject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdapterPattern.h" />
-    <ClInclude Include="BridgePattern.h" />
-    <ClInclude Include="CompositePattern.h" />
-    <ClInclude Include="DecoratorPattern.h" />
-    <ClInclude Include="Examples.h" />
-    <ClInclude Include="FacadePattern.h" />
-    <ClInclude Include="FlyweightPattern.h" />
-    <ClInclude Include="ProxyPattern.h" />
+    <ClInclude Include="ChainOfResponsibility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

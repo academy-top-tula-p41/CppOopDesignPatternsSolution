@@ -16,6 +16,9 @@ using namespace DecoratorNamespace;
 #include "FacadePattern.h"
 using namespace FacadeNamespace;
 
+#include "ProxyPattern.h"
+using namespace ProxyNamespace;
+
 class Examples
 {
 public:
@@ -25,7 +28,7 @@ public:
         client->ClientCode(new ConcreteClassA(100));
         client->ClientCode(new ConcreteClassB(200));
 
-        ServiceAdapter* adapter = new ServiceAdapter(new Service());
+        ServiceAdapter* adapter = new ServiceAdapter(new AdapterNamespace::Service());
         adapter->SetData(300);
         client->ClientCode(adapter);
 
@@ -104,6 +107,13 @@ public:
     {
         FacadeClient* client = new FacadeClient();
         client->ClientCode(new Facade());
+    }
+
+    static void ProxyExample()
+    {
+        ProxyClient* client = new ProxyClient();
+        //client->ClientCode(new Service());
+        client->ClientCode(new Proxy(new ProxyNamespace::Service()));
     }
 };
 

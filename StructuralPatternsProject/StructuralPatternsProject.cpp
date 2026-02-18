@@ -1,10 +1,20 @@
 ﻿#include <iostream>
 
-#include "ProxyPattern.h"
+#include "FlyweightPattern.h"
+using namespace FlyweightNamespace;
 
 int main()
 {
-	ProxyClient* client = new ProxyClient();
-	//client->ClientCode(new Service());
-	client->ClientCode(new Proxy(new Service()));
+	FlyweightFactory factory { 
+		SharedState("tank", "tank.jpg"), 
+		SharedState("plane", "plane.png") };
+
+	factory.ListFlyweights();
+
+	SharedState tankState("tank", "tank.jpg");
+	auto fw = factory.GetFlyweight(tankState);
+	
+	std::cout << "\n----\n" << fw.GetSharedState()->ToString() << "\n----\n\n";
+
+	factory.ListFlyweights();
 }

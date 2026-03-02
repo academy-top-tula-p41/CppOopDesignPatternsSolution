@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 
-#include "CommandPattern.h"
+#include "MediatorPattern.h"
 
 int main()
 {
-    CommandClient* client = new CommandClient();
+    MediatorClient* client = new MediatorClient();
     client->ClientCode();
 }

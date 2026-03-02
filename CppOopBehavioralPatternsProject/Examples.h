@@ -2,6 +2,8 @@
 #include "ChainOfResponsibility.h"
 using namespace ChainNamespace;
 
+#include "CommandPattern.h"
+
 class Examples
 {
 public:
@@ -30,5 +32,36 @@ public:
         payChain->PayHandler(request);
         std::cout << "\n";
 	}
+
+    static void CommandExamples()
+    {
+        /*CommandClient* client = new CommandClient();
+    client->ClientCode();*/
+
+        Television* tv = new Television();
+        Controller* pult = new Controller(
+            new PowerOnTvCommand(tv),
+            new PowerOffTvCommand(tv),
+            new SoundUpTvCommand(tv),
+            new SoundDownTvCommand(tv));
+
+        pult->ButtonPower();
+        pult->ButtonSoundPlus();
+        pult->ButtonSoundPlus();
+        pult->ButtonSoundPlus();
+        pult->ButtonSoundMinus();
+        //pult->ButtonPower();
+
+        ControllerMobileApp* app = new ControllerMobileApp(
+            new PowerOnTvCommand(tv),
+            new PowerOffTvCommand(tv),
+            new SoundUpTvCommand(tv),
+            new SoundDownTvCommand(tv));
+
+        //app->PowerOnMenuItem();
+        app->SoundPlusMenuItem();
+        app->PowerOffMenuItem();
+    }
+
 };
 

@@ -3,6 +3,7 @@
 using namespace ChainNamespace;
 
 #include "CommandPattern.h"
+#include "MediatorPattern.h"
 
 class Examples
 {
@@ -61,6 +62,15 @@ public:
         //app->PowerOnMenuItem();
         app->SoundPlusMenuItem();
         app->PowerOffMenuItem();
+    }
+
+    static void MediatorExamples()
+    {
+        /*MediatorClient* client = new MediatorClient();
+    client->ClientCode();*/
+
+        Company* company = new Company();
+        company->ClientCode();
     }
 
 };

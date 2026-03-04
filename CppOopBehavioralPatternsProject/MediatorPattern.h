@@ -150,7 +150,7 @@ public:
 class CustomerCollegue : public Collegue
 {
 public:
-	CustomerCollegue(Manager* manager)
+	CustomerCollegue(Manager* manager = nullptr)
 		: Collegue(CollegueType::Customer, manager){ }
 	
 	void PlaceAnOrder()
@@ -167,7 +167,7 @@ public:
 class DesignerCollegue : public Collegue
 {
 public:
-	DesignerCollegue(Manager* manager)
+	DesignerCollegue(Manager* manager = nullptr)
 		: Collegue(CollegueType::Designer, manager) {}
 
 	void MakeModel()
@@ -184,7 +184,7 @@ public:
 class DeveloperCollegue : public Collegue
 {
 public:
-	DeveloperCollegue(Manager* manager)
+	DeveloperCollegue(Manager* manager = nullptr)
 		: Collegue(CollegueType::Developer, manager) {}
 
 	void Developing()
@@ -201,7 +201,7 @@ public:
 class TesterCollegue : public Collegue
 {
 public:
-	TesterCollegue(Manager* manager)
+	TesterCollegue(Manager* manager = nullptr)
 		: Collegue(CollegueType::Tester, manager) {}
 
 	void TestingOnBags()
@@ -217,5 +217,83 @@ public:
 
 class ProjectManager : public Manager
 {
+	CustomerCollegue* customer;
+	DesignerCollegue* designer;
+	DeveloperCollegue* developer;
+	TesterCollegue* tester;
 public:
+	ProjectManager(CustomerCollegue* customer,
+					DesignerCollegue* designer,
+					DeveloperCollegue* developer,
+					TesterCollegue* tester)
+		: customer{ customer },
+		designer{ designer },
+		developer{ developer },
+		tester{ tester }
+	{ 
+		this->customer->SetManager(this);
+		this->designer->SetManager(this);
+		this->developer->SetManager(this);
+		this->tester->SetManager(this);
+	}
+
+	void ReadReport(Collegue* collegue, std::string report, EventType event) override
+	{
+		std::cout << "Manager. Read report from " << typeid(*collegue).name() << "\n";
+		std::cout << "Manager. Report: " << report << "\n\n";
+
+		switch (event)
+		{
+		case EventType::Order:
+			std::cout << "Manager. Send Order for Designer. Make Model\n";
+			designer->MakeModel();
+			break;
+		case EventType::Modeling:
+			std::cout << "Manager. Send Order for Designer. Create Project\n";
+			designer->CreateProject();
+			break;
+		case EventType::Project:
+			std::cout << "Manager. Send Order for Developer. Developing Code\n";
+			developer->Developing();
+			break;
+		case EventType::Development:
+			std::cout << "Manager. Send Order for Tester. Testing first time\n";
+			tester->TestingOnBags();
+			break;
+		case EventType::TestingWrong:
+			std::cout << "Manager. Send Order for Developer. Debugging Code\n";
+			developer->Debugging();
+			break;
+		case EventType::Debugging:
+			std::cout << "Manager. Send Order for Tester. Testing final\n";
+			tester->TestingFinal();
+			break;
+		case EventType::TestingGood:
+			std::cout << "Manager. Send Order for Customer. App Release. Payment.\n";
+			customer->Payment();
+			break;
+		case EventType::Release:
+			break;
+		case EventType::Payment:
+			std::cout << "Manager. Project is final!\n";
+			break;
+		default:
+			break;
+		}
+	}
+};
+
+class Company
+{
+public:
+	void ClientCode()
+	{
+		CustomerCollegue* customer = new CustomerCollegue();
+		ProjectManager* manager = new ProjectManager(customer,
+			new DesignerCollegue(),
+			new DeveloperCollegue(),
+			new TesterCollegue());
+		
+		customer->PlaceAnOrder();
+	}
 };

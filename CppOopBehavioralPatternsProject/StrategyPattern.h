@@ -157,7 +157,29 @@ public:
 
 	DynamicObject* Deserialize(std::string serialText) override
 	{
-		return nullptr;
+		int position{};
+		int length{};
+		DynamicObject* object = new DynamicObject();
+
+		while (position < serialText.length())
+		{
+			position = serialText.find("<", position) + 1;
+			if (!position) break;
+			length = serialText.find(">", position) - position;
+			std::string key = serialText.substr(position, length);
+			position += length + 1;
+			
+			if (key == "object") continue;
+			if (key == "/object") break;
+
+			length = serialText.find("</", position) - position;
+			std::string value = serialText.substr(position, length);
+			position = serialText.find(">", position) + 1;
+
+			object->AddProperty(key, value);
+		}
+
+		return object;
 	}
 };
 

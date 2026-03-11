@@ -25,8 +25,13 @@ int main()
     std::cout << "\n";
 
     UniversalSerializer* serializer = new UniversalSerializer(new XmlSerializer());
-    std::cout << serializer->Serialize(obj);
+    std::string xml = serializer->Serialize(obj);
+    std::cout << xml << "\n";
+    auto xmlObject = serializer->Deserialize(xml);
+    for (int i{}; i < xmlObject->Size(); i++)
+        std::cout << xmlObject->At(i).first << " " << xmlObject->At(i).second << "\n";
     std::cout << "\n";
+
 
     serializer->SetSerializer(new JsonSerializer());
     std::string json = serializer->Serialize(obj);

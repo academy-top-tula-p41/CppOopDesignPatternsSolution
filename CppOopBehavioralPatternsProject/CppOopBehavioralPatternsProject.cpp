@@ -1,43 +1,40 @@
 ﻿#include <iostream>
 
-#include "MementoPattern.h"
+#include "StrategyPattern.h"
 
 int main()
 {
-    srand(time(nullptr));
-
-    /*MementoClient* client = new MementoClient();
+    /*StrategyClient* client = new StrategyClient();
     client->ClientCode();*/
 
-    Player* player = new Player();
-    PlayerHistory* history = new PlayerHistory();
+    DynamicObject* obj = new DynamicObject();
+    obj->AddProperty("name", "Bobby");
+    obj->AddProperty("city", "Moscow");
+    obj->AddProperty("aaa", "Bbbbb");
 
-    int rounds{ 5 };
+    for (int i{}; i < obj->Size(); i++)
+        std::cout << obj->At(i).first << " " << obj->At(i).second << "\n";
+    std::cout << "\n";
 
-    for (int i{}; i < rounds; i++)
-    {
-        player->PlayRound();
-        std::cout << "Player play. State: " << player->State() << "\n";
-        history->Push(player->Save());
-    }
+    obj->ChangeProperty("city", "Kazan");
+    obj->ChangeProperty("company", "Yandex");
+    obj->RemoveProperty("aaa");
 
-    history->History();
+    for (int i{}; i < obj->Size(); i++)
+        std::cout << obj->At(i).first << " " << obj->At(i).second << "\n";
+    std::cout << "\n";
 
-    player->Load(history->Pop());
-    std::cout << "Player load game. State: " << player->State() << "\n";
+    UniversalSerializer* serializer = new UniversalSerializer(new XmlSerializer());
+    std::cout << serializer->Serialize(obj);
+    std::cout << "\n";
 
-    player->Load(history->Pop());
-    std::cout << "Player load game. State: " << player->State() << "\n";
+    serializer->SetSerializer(new JsonSerializer());
+    std::string json = serializer->Serialize(obj);
+    std::cout << json << "\n";
+    auto jsonObject = serializer->Deserialize(json);
 
-    player->Load(history->Pop());
-    std::cout << "Player load game. State: " << player->State() << "\n";
+    for (int i{}; i < jsonObject->Size(); i++)
+        std::cout << jsonObject->At(i).first << " " << jsonObject->At(i).second << "\n";
+    std::cout << "\n";
 
-    for (int i{}; i < rounds; i++)
-    {
-        player->PlayRound();
-        std::cout << "Player play. State: " << player->State() << "\n";
-        history->Push(player->Save());
-    }
-
-    history->History();
 }

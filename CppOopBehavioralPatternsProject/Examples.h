@@ -7,6 +7,8 @@ using namespace ChainNamespace;
 #include "MementoPattern.h"
 #include "StrategyPattern.h"
 #include "StatePattern.h"
+#include "ObserverPattern.h"
+#include "VisitorPattern.h"
 
 class Examples
 {
@@ -166,5 +168,23 @@ public:
         waterClient->Experiment();
     }
 
+    static void ObserverExamples()
+    {
+        std::srand(time(nullptr));
+
+        /*ObserverClient* client = new ObserverClient();
+        client->ClientCode();*/
+
+        Buisness* buisness = new Buisness();
+        buisness->BuisnessTraiding();
+    }
+
+    static void VisitorExamples()
+    {
+        /*VisiterClient* client = new VisiterClient();
+    client->ClientCode();*/
+        BankWork* bw = new BankWork();
+        bw->Work();
+    }
 };
 

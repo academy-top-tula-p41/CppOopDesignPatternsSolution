@@ -130,11 +130,13 @@
     <ClInclude Include="ChainOfResponsibility.h" />
     <ClInclude Include="CommandPattern.h" />
     <ClInclude Include="Examples.h" />
+    <ClInclude Include="InterpreterPattern.h" />
     <ClInclude Include="MediatorPattern.h" />
     <ClInclude Include="MementoPattern.h" />
     <ClInclude Include="ObserverPattern.h" />
     <ClInclude Include="StatePattern.h" />
     <ClInclude Include="StrategyPattern.h" />
+    <ClInclude Include="VisitorPattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

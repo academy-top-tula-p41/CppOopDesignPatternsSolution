@@ -1,11 +1,9 @@
 ﻿#include <iostream>
 
-#include "ObserverPattern.h"
+#include "InterpreterPattern.h"
 
 int main()
 {
-    std::srand(time(nullptr));
-
-    ObserverClient* client = new ObserverClient();
-    client->ClientCode();
+    InterpterterClient* client = new InterpterterClient();
+    client->ExpressionOne();
 }
